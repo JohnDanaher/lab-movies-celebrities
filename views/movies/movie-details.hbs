@@ -14,3 +14,13 @@
 </div>
 {{/each}}
 </div>
+<div>
+    <form action="/movies/{{_id}}/delete" method="post">
+    <button type="submit">Delete Movie</button>
+    </form>
+</div>
+<div>
+    <form action="/movies/{{_id}}/edit" method="post">
+    <button type="submit">Edit Movie</button>
+    </form>
+</div>

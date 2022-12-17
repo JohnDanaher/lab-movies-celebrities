@@ -31,26 +31,6 @@ router.post('/movies/create', async (req, res) => {
             res.redirect('/movies');
         }})
 
-    
-        // app.post('/animals/create', async (req, res) => {
-        //     console.log(req.body);
-        //     const { name, animalType, age, userId } = req.body;
-            
-        //     const owner = await User.findOne({_id: userId}); // using await because it might take a while to search through the database and we need that value before the next process can be executed properly
-        
-        //     try { // this makes sure everything runs properly before. The catch will execute if it doesn't
-        //     await Pet.create({ name, animalType, age: Number(age), ownersId: userId }) // same here
-        //         .then(newPet => {
-        //             owner.petsId.push(newPet._id) // pushes into the array you created in the User model
-        //             owner.save();    
-        //         })
-        //         res.redirect('/')
-        //     }
-        //     catch(err){
-        //         console.log(err)}
-        //     // .then(() => res.redirect('/'))
-        //     // .catch(error => console.log(error))
-        //   })
 
 router.get('/movies', (req, res) => {
     Movie.find()
@@ -71,4 +51,30 @@ router.get('/movies/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+router.post('/movies/:id/delete', (req, res) => {
+    const { id } = req.params;
+    Movie.findByIdAndRemove(id)
+    .then(() => {
+        res.redirect('/movies');
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/movies/:id/edit', (req, res) => {
+    const { id } = req.params;
+    Movie.findById(id)
+    .then((movie) => {
+        res.render('movies/edit-movie', movie)
+    })
+    .catch(err => console.log(err))
+})
+
+router.post('/movies/:id/edit', (req, res) => {
+    const { id } = req.params;
+    const { title, genre, plot, celebrities } = req.body;
+
+    Movie.findByIdAndUpdate(id, { title, genre, plot, cast: celebrities})
+    .then(() => res.redirect('/movies/movie-details'))
+    .catch(error => console.log(error))
+})
 module.exports = router;
