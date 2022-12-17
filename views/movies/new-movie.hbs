@@ -1,0 +1,16 @@
+<h2>Movies are chill tho</h2>
+<form action="/movies/create" method="post">
+<input type="text" name="title" placeholder="Movie Title">
+<input type="text" name="genre" placeholder="Genre">
+<input type="text" name="plot" placeholder="Plot">
+<label for="celebrities">Choose your stars:</label>
+<select name="celebrities" multiple>
+    {{#each celebs}}
+  <option value="{{_id}}">{{name}}</option>
+  {{/each}}
+  {{!-- <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option> --}}
+</select>
+<button type="submit">Submit Movie</button>
+</form>

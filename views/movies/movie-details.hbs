@@ -1,0 +1,16 @@
+<h2>Movie deets</h2>
+<p>Title: {{title}}</p>
+<p>Genre: {{genre}}</p>
+<p>Plot: {{plot}}</p>
+<p>Cast:</p>
+<br>
+<div>
+    {{!-- Only using each because defined petsId as an array in the User model --}}
+{{#each cast}} 
+<div>
+<p style="font-weight: bold;">{{name}}</p>
+<p style="font-style: italic;">{{occupation}}</p>
+<p>{{catchPhrase}}</p>
+</div>
+{{/each}}
+</div>
