@@ -64,6 +64,11 @@ router.get('/movies/:id/edit', (req, res) => {
     const { id } = req.params;
     Movie.findById(id)
     .then((movie) => {
+        // we want to return a pre filled form with all the data of the movie the the user has chosen,
+        // we also want the user to choose from all the Celebrities in our DB
+        // before rendering the form we can call the methods to get all the celebrities 
+        // and then pass both data (movie details and list of celebrieties) to our form page
+        // see --> edit-movie.hbs 
         res.render('movies/edit-movie', movie)
     })
     .catch(err => console.log(err))

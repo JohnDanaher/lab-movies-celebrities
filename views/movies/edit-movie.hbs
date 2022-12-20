@@ -1,14 +1,26 @@
 <h2>Edit Your Movie</h2>
 {{!-- <div>
     <form action="/movies/{{_id}}" method="post">
-    <input type="text" name="title" placeholder="{{title}}">
-    <input type="text" name="genre" placeholder="{{genre}}">
-    <input type="text" name="plot" placeholder="{{plot}}">
+    
+// we don't know what the user is gonna change, for this reason we want to pre fill all the inputs 
+// with the values we already have. A value can be overwritten, or left as it is. (to also avoid missing data --> errors/ bugs)
+
+      <input type="text" name="title" placeholder="{{title}}">
+      <input type="text" name="genre" placeholder="{{genre}}">
+      <input type="text" name="plot" placeholder="{{plot}}">
+
     <label for="celebrities">Edit your stars:</label>
+
+// for the 'cast property' of this movie we have a different kind of input 
+              | 
+              |
     <select name="celebrities" multiple>
-    {{#each deets}}
-    <option value="{{_id}}">{{name}}</option>
-    {{/each}}
+
+// we'll give an option for each celebrity in our Celebrities array
+
+        {{#each deets}}
+            <option value="{{_id}}">{{name}}</option> //  👍
+        {{/each}}
     </select>
     <button type="submit">Submit Movie</button>
     </form>
