@@ -25,10 +25,8 @@ router.get('/celebrities', (req, res) => {
         res.render('celebrities/celebrities', { celebs })
     })
     .catch(error => console.log(error))
-// Send the list of users to my homepage
 })
 
-    // Redirect our user to their profile page
 
 
 module.exports = router;

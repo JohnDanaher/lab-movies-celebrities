@@ -1,15 +1,15 @@
 <h2>Edit Your Movie</h2>
-{{!-- <div>
-    <form action="/movies/{{_id}}" method="post">
-    <input type="text" name="title" placeholder="{{title}}">
-    <input type="text" name="genre" placeholder="{{genre}}">
-    <input type="text" name="plot" placeholder="{{plot}}">
+<div>
+    <form action="/movies/{{movie._id}}/edit" method="post">
+    <input type="text" name="title" value="{{movie.title}}">
+    <input type="text" name="genre" value="{{movie.genre}}">
+    <input type="text" name="plot" value="{{movie.plot}}">
     <label for="celebrities">Edit your stars:</label>
     <select name="celebrities" multiple>
-    {{#each deets}}
+    {{#each allCelebs}}
     <option value="{{_id}}">{{name}}</option>
     {{/each}}
     </select>
     <button type="submit">Submit Movie</button>
     </form>
-</div> --}}
+</div>

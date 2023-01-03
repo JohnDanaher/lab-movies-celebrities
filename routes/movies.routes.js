@@ -64,17 +64,20 @@ router.get('/movies/:id/edit', (req, res) => {
     const { id } = req.params;
     Movie.findById(id)
     .then((movie) => {
-        res.render('movies/edit-movie', movie)
+        Celebrity.find()
+        .then(allCelebs => {
+            res.render('movies/edit-movie', {movie, allCelebs})
+        })
     })
     .catch(err => console.log(err))
 })
 
 router.post('/movies/:id/edit', (req, res) => {
     const { id } = req.params;
-    const { title, genre, plot, celebrities } = req.body;
+    const { title, genre, plot, cast } = req.body;
 
-    Movie.findByIdAndUpdate(id, { title, genre, plot, cast: celebrities})
-    .then(() => res.redirect('/movies/movie-details'))
+    Movie.findByIdAndUpdate(id, { title, genre, plot, cast })
+    .then(() => res.redirect(`/movies/${id}`))
     .catch(error => console.log(error))
 })
 module.exports = router;

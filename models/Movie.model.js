@@ -7,7 +7,7 @@ const movieSchema = new Schema({
    genre: String,
    plot: String,
    cast: [{
-    type: mongoose.Schema.Types.ObjectId, ref: 'Celebrity'}]
+    type: Schema.Types.ObjectId, ref: 'Celebrity'}]
 });
 
 const Movie = mongoose.model('Movie', movieSchema); 
